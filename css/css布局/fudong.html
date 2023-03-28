@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main {
+            width: 500px;
+            background:gainsboro;
+        }
+        #child1{
+            width: 100px;
+            height: 100px;
+            background: #f000f0;
+            /* 浮动原理 脱离文档流 空间释放  移动到包含它的框为止 也就是main*/
+            float: right;
+        }
+        #child2{
+            width: 100px;
+            height: 100px;
+            background: blue;
+            float: right;
+            
+        }
+        p{
+            background: yellow;
+            /* left right both  清理浮动*/
+            clear: both ;
+        }
+
+        .clear{
+            clear: both;
+        }
+        /* 伪元素默认为 行元素  */
+        #main::after{ /* 伪元素相当于在父元素的后面添加一个 */
+             content: "";         /*   相当于在child2标签下面添加了一个行元素*/
+             /* block clear:both才会生效 */
+             display: block;
+             clear: both;
+
+        }
+        /* 还有一种方式可以简便清除浮动 单独抽出来一个 .clearfix::after*/
+        /* 这样达到复用的效果，谁想用，谁加上一个属性 class=clearfix*/
+        .clearfix::after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        #main3{
+             /* 溢出隐藏 解决浮动的塌陷问题*/
+             overflow: hidden;
+        }
+
+        /* BFC 块级格式化上下文 
+        
+            触发BFC overflow:hidden
+            就会按照BFC的规则去渲染页面
+            浮动的元素也参与计算高度
+        */
+
+
+    </style>
+</head>
+
+<body>
+    <!-- 浮动导致的塌陷问题 -->
+    <div id="main" class="clearfix">
+        <div id="child1"></div>
+        <div id="child2"></div>
+    </div>
+
+    
+    <div id="main3" class="clearfix">
+        <div id="child1"></div>
+        <div id="child2"></div>
+    </div>
+
+</body>
+
+</html>
