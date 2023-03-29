@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            overflow: hidden;
+        }
+        #child1{
+            width: 100px;
+            height: 100px;
+            background: #f000f0;
+            /* 浮动原理 脱离文档流 空间释放  移动到包含它的框为止 也就是main*/
+            /* float: right; */
+            float: left;
+        }
+        #child2{
+            width: 100px;
+            height: 100px;
+            background: blue;
+            /* float: right; */
+            float: left;
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="child1"></div>
+        <div id="child2"></div>
+    </div>
+    
+</body>
+</html>

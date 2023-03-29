@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            height: 100px;
+        }
+        .container{
+            display: grid;
+            /* 核心代码：左右两栏固定宽度，中间自适应宽度 */
+            grid-template-columns: 200px auto 200px;
+        }
+        .left{
+            background-color: red;
+        }
+        .middle{
+            background-color: blue;
+        }
+        .right{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">左边</div>
+        <div class="middle">中间</div>
+        <div class="right">右边</div>
+    </div>
+</body>
+</html>

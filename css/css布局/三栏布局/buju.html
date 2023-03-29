@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+        }
+
+        .left {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: red;
+
+        }
+
+        .right {
+            height: 200px;
+            width: 200px;
+            background-color: blue;
+            float: right;
+
+        }
+
+        .main {
+            height: 200px;
+            background-color: green;
+            /* 方法一 浮动+margin */
+            /* margin-left: 200px;
+            margin-right: 200px; */
+
+            /* 方法二 触发BFC  使主元素环绕浮动元素进行布局*/
+            /* overflow: hidden; */
+
+            /* 方法三 通过flex布局  将容器属性设置为flex*/
+            /* flex: 1; */
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="main"></div>
+    </div>
+</body>
+
+</html>
