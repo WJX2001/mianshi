@@ -17,9 +17,12 @@
             Object.defineProperty(target,key,{
                 // 给所有的属性添加get set方法
                 get() {
+                    // 记录对应的渲染watcher
                     return value
                 },
+                // 用户修改操作
                 set(newValue) {
+                    // 让记录的watcher重新执行以下即可
                     if(value !== newValue)
                     value = newValue
                     observer(newValue)
