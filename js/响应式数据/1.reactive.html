@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let obj = { name: 'wjx', age: 30 ,n: {num:100}};
+        function defineReactive(target,key,value) {
+            // 当obj中的数据仍然包括对象，例如n，那么进行递归处理
+            observer(value)
+            Object.defineProperty(target,key,{
+                // 给所有的属性添加get set方法
+                get() {
+                    return value
+                },
+                set(newValue) {
+                    if(value !== newValue)
+                    value = newValue
+                    observer(newValue)
+                }
+            })
+        }
+        function observer(data) {
+            if(typeof data !=='object' || typeof data == null){
+                return 
+            }
+            for(let key in data){
+                defineReactive(data,key,data[key])
+            }
+        }
+        observer(obj)
+        console.log(obj)
+    </script>
+</body>
+
+</html>
