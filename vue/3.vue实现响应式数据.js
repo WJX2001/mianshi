@@ -41,3 +41,26 @@ function definReactive(obj,key,val) {
         }
     })
 }
+
+
+// Vue3的解决方法 
+// TODO: 使用Proxy
+
+let handler = {
+    get(target,key) {
+        let temp = target[key]
+        if(typeof temp ==='object'){
+            return new Proxy(temp,handler)
+        }
+    },
+    set(target,key,value){
+        // 触发effect更新
+        target[key] = value
+    }
+}
+
+
+
+function reactive(target) {
+    return new Proxy(target,handler)
+}
