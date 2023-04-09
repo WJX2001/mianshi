@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <!-- 定义路由 -->
+        <li><a href="#/home">home</a></li>
+        <li><a href="#/about">about</a></li>
+        <!-- 渲染路由 -->
+        <h1 id="routerView"></h1>
+    </ul>
+    <script>
+        // 页面加载完 不会触发 所以主动触发一次
+        window.addEventListener('DOMContentLoaded',onHashChange)
+        
+        // 监听路由变化
+        window.addEventListener('hashchange',onhashchange)
+        let routerView = document.querySelector('#routerView')
+
+        // 路由变化 渲染视图
+        function onHashChange(){
+            switch(location.hash){
+                case '#/home':
+                    routerView.innerHTML = 'Home'
+                    return 
+                case '#/about':
+                    routerView.innerHTML = 'About'
+                    return
+                default:
+                    return
+            }
+        }
+    </script>
+</body>
+</html>
