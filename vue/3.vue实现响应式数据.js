@@ -52,6 +52,7 @@ let handler = {
         if(typeof temp ==='object'){
             return new Proxy(temp,handler)
         }
+        return temp
     },
     set(target,key,value){
         // 触发effect更新
