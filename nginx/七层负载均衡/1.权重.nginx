@@ -1,0 +1,16 @@
+http {
+    upstream backend {
+        # ip_hash 如果想使用ip_hash 
+        server backend1.example.com weight=3;
+        server backend2.example.com weight=2;
+        server backend3.example.com weight=1;
+    };
+    server{
+        listen 80;
+        server_name example.com;
+    };
+
+    location / {
+        proxy_pass http://backend;
+    }
+};

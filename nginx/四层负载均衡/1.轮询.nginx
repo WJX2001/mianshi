@@ -1,0 +1,16 @@
+
+# 基于轮询算法 通过Stream 代理功能
+stream {
+    # 创建一个backend 上游服务器池
+    upstream backend {
+        server backend1.example.com:8080;
+        server backend2.example.com:8080;
+        server backend3.example.com:8080;
+    }
+
+    server {
+        listen 80;
+        # 通过proxy_pass 转发到上游服务器池子中，分配请求到不同的后端服务器
+        proxy_pass backend
+    }
+}
