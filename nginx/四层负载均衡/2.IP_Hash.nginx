@@ -1,0 +1,13 @@
+stream {
+    upstream backend {
+        # 将客户端地IP地址进行哈希计算，然后将哈希值除以服务器数量取余数
+        ip_hash; 
+        server backend1.example.com:8080;
+        server backend2.example.com:8080;
+        server backend3.example.com:8080;
+    }
+}
+server{
+    listen 80;
+    proxy_pass backend
+};
