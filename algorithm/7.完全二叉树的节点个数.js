@@ -7,7 +7,7 @@ var countNodes = function(root) {
 
     while(l!==null) {
         l = l.left
-        h1++
+        hl++
     }
     while(r!==null) {
         r = r.right;
