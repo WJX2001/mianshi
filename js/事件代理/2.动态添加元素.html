@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button" name="" id="btn" value="添加" />
+    <ul id="ul1">
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+        <li>item 4</li>
+    </ul>
+
+    <script>
+        const oBtn = document.getElementById('btn')
+        const oU1 = document.getElementById('ul1')
+        let num = 4
+
+        // 事件委托，添加的子元素也有事件
+        oU1.onclick = function (e) {
+            var event = e || window.event
+            var target = event.target || event.srcElement
+            if (target.nodeName.toLowerCase() == 'li') {
+                console.log('the content is: ', target.innerHTML);
+            }
+        }
+
+        // 添加新节点
+        oBtn.onclick = function() {
+            num++;
+            var oLi = document.createElement('li')
+            // 添加内容
+            oLi.innerHTML = `item ${num}`
+            // 将新建的元素添加进去
+            oU1.appendChild(oLi)
+        }
+    </script>
+</body>
+
+</html>

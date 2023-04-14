@@ -1,6 +1,6 @@
 function reactive(obj,callback){
     return new Proxy(obj,{
-        // 三个参数分别为 被代理的对象，要访问的值，Proxy对象
+        // 三个参数分别为 被代理的对象，要访问的值，Proxy对象,指的是代理对象本身
         get(target,property,receiver){
             // Reflect.get 获取对象的属性值，会触发get 操作的拦截器方法，从而实现对对象的拦截和定制
             const value = Reflect.get(target,property,receiver);
