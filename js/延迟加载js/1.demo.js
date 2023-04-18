@@ -175,3 +175,141 @@
 // }
 // o.b.fn()
 
+// window.name = 'ByteDance';
+// function A() {
+//     this.name = 123
+// }
+
+// A.prototype.getA = function() {
+//     console.log(this)
+//     return this.name+1
+// }
+
+// let a = new A()
+// console.log(a.getA)
+// let funcA = a.getA
+// funcA()
+
+
+// window.name = 'ByteDance';
+// function A() {
+//     this.name = 123
+// }
+
+// A.prototype.getA = function () {
+//     console.log(this)
+//     return this.name + 1
+// }
+
+// let a = new A()
+// console.log(a.getA)   // 因为A函数没有被执行，所以返回整个函数题 
+// /** 
+//  * ƒ () {
+//     console.log(this)
+//     return this.name+1
+//     }
+// */
+// let funcA = a.getA
+// funcA()  // this 代表window
+// console.log(funcA()) //ByteDance1
+
+
+// var length = 10
+// function fn() {
+//     return this.length+1
+// }
+
+// var obj = {
+//     length:5,
+//     test1:function() {
+//         return fn()
+//     }
+// }
+
+// obj.test2 = fn;
+
+// console.log(obj.test1())  //false
+// console.log(fn()===obj.test2()) // false  11!=6
+// console.log(obj.test1() === obj.test2()) //false 11!= 6
+
+
+// var arr = [1,2,3]
+// console.log(Array.isArray(arr)) //true
+
+// console.log(arr instanceof Array) // true
+
+// console.log(Object.prototype.toString.call(arr).indexOf('Array') >-1)
+
+// console.log(Array.prototype.isPrototypeOf(arr))
+
+// console.log(arr.constructor.toString().indexOf('Array') >-1)
+
+
+// var arr1 = ['a','b','c','d','e']
+
+// var arr2 = arr1.slice(-3) // [ 'c', 'd', 'e' ]
+// var arr3 = arr1.slice(1,3)
+// // console.log(arr2)
+// // console.log(arr1)
+// // console.log(arr1.splice(1,2))
+// console.log(arr1.splice(1,1,'你好'))
+// console.log(arr1)
+
+
+var arr1 = [1, 2, 3, 2, 4, 1]
+// console.log(new Set(arr1))
+
+// console.log([...new Set(arr1)])
+// console.log(Array.from(new Set(arr1)))
+
+// function unique(arr) {
+//     var brr = []
+//     for(var i=0;i<arr.length;i++) {
+//         if(brr.indexOf(arr[i]) == -1) {
+//             // 证明此时不存在brr中，将元素加入
+//             brr.push(arr[i])
+//         }
+//     }
+//     return brr
+// }
+// console.log(unique(arr1))
+// function unique(arr) {
+//     arr = arr.sort()
+//     var brr = [[arr[0]]]
+//     for(var i=0;i<arr.length;i++) {
+//         if(arr[i] !== arr[i-1]){
+//             brr.push(arr[i])
+//         }
+//     }
+//     return brr
+// }
+// console.log(unique(arr1))
+
+/**
+ * // 输入: [
+  [4,5,1,3],
+  [13,27,18,26],
+  [32,35,37,39],
+  [1000,1001,857,1]
+]
+//输出：
+[5,27,39,1001]
+ */
+
+ 
+// function fnArr(arr) {
+//     var newArr = [];
+
+//     // 进行循环
+//     arr.forEach(item => {
+//         newArr.push(Math.max(...item))
+//     });
+//     return newArr
+// }
+// console.log(fnArr([
+//     [4,5,1,3],
+//     [13,27,18,26],
+//     [32,35,37,39],
+//     [1000,1001,857,1]
+//   ]))   // [ 5, 27, 39, 1001 ]
+
