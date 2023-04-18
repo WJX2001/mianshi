@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="height: 5000px;">
+    <script>
+        // 处理函数
+        const handle = () => {
+            console.log(Math.random())
+        }
+        // 
+        const debounce = (fn,wait) => {
+            let timeout = null
+            return function() {
+                // 先清理一下定时器
+                clearTimeout(timeout)
+                timeout = setTimeout(fn,wait)
+            }
+        }
+        // throttle 时间戳实现
+        const throttle  = (fn,delay) => {
+            // 上一次触发的时间
+            let lastTime = 0
+            return function() {
+                let nowTime = Date.now()
+                if(nowTime - lastTime>delay){
+                    fn.apply(this)
+                    lastTime = nowTime
+                }
+            }
+        }
+        window.addEventListener('scroll',throttle(handle, 1000))
+    </script>
+</body>
+</html>
